@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Wispr-Flow Clone
+Comment=Voice-to-text transcription with GPU acceleration
+Exec=/home/ubuntu/projects/wispr-flow-clone/run.sh
+Path=/home/ubuntu/projects/wispr-flow-clone
+Icon=audio-input-microphone
+Terminal=true
+Categories=Utility;AudioVideo;
+StartupNotify=false

@@ -1,0 +1,52 @@
+# Wispr-Flow Clone Configuration
+
+# Transcription Model
+model:
+  # Options: "whisper" or "parakeet"
+  type: "parakeet"
+  
+  # For Whisper: tiny, base, small, medium, large-v2, large-v3
+  # For Parakeet: parakeet-tdt-0.6b (automatically downloaded)
+  size: "parakeet"
+  
+  # Device: "cpu" or "cuda"
+  device: "cuda"
+  
+  # Language (use "en" for English, or "auto" for auto-detection)
+  language: "en"
+
+# Hotkey Configuration
+hotkey:
+  # Modifier keys (ctrl, alt, shift combinations)
+  modifiers: ["ctrl", "alt"]
+  
+  # Main key (optional, leave empty for modifier-only)
+  key: ""
+
+# Audio Settings
+audio:
+  # Sample rate in Hz (16000 recommended for Whisper)
+  sample_rate: 16000
+  
+  # Number of channels (1 for mono, 2 for stereo)
+  channels: 1
+  
+  # Chunk size for recording
+  chunk_size: 1024
+  
+  # Audio format (int16 recommended)
+  format: "int16"
+  
+  # Microphone device index (null for default, or specific device number)
+  device_index: null
+
+# Application Settings
+app:
+  # Enable debug logging
+  debug: false
+  
+  # Minimum audio length in seconds (ignore very short recordings)
+  min_audio_length: 0.3
+  
+  # Show notifications (requires notify-send)
+  show_notifications: false
