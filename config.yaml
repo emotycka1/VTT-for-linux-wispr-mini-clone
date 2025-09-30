@@ -25,7 +25,9 @@ hotkey:
 
 # Audio Settings
 audio:
-  # Sample rate in Hz (16000 recommended for Whisper)
+  # Target sample rate for transcription (16000 Hz is optimal for ASR models)
+  # Note: App will auto-detect your device's native sample rate and resample if needed
+  # This ensures compatibility with any microphone (USB, Bluetooth, built-in, etc.)
   sample_rate: 16000
   
   # Number of channels (1 for mono, 2 for stereo)
@@ -37,7 +39,11 @@ audio:
   # Audio format (int16 recommended)
   format: "int16"
   
-  # Microphone device index (null for default, or specific device number)
+  # Microphone device (null = automatically follow system default input device)
+  # When set to null, the app will use whichever microphone you've selected in 
+  # your system settings (Sound → Input). This allows seamless switching between
+  # USB mics, Bluetooth headsets, and built-in mics without changing this config.
+  # Set to a specific device number (e.g., 5) to lock to one microphone.
   device_index: null
 
 # Application Settings

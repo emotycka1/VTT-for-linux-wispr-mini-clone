@@ -38,9 +38,34 @@ class AudioRecorder:
         self.is_recording = False
         self.audio_buffer: list[np.ndarray] = []
         self._lock = Lock()
+        self.actual_sample_rate = sample_rate  # Actual device sample rate
+        
+        # Log device information
+        try:
+            if device_index is None:
+                device_info = self.audio.get_default_input_device_info()
+                self.actual_sample_rate = int(device_info['defaultSampleRate'])
+                logger.info(
+                    f"Using system default input device: {device_info['name']} "
+                    f"(native rate: {self.actual_sample_rate}Hz)"
+                )
+                if self.actual_sample_rate != sample_rate:
+                    logger.info(
+                        f"Will record at {self.actual_sample_rate}Hz and resample to {sample_rate}Hz for transcription"
+                    )
+            else:
+                device_info = self.audio.get_device_info_by_index(device_index)
+                self.actual_sample_rate = int(device_info['defaultSampleRate'])
+                logger.info(
+                    f"Using device {device_index}: {device_info['name']} "
+                    f"(native rate: {self.actual_sample_rate}Hz)"
+                )
+        except Exception as e:
+            logger.warning(f"Could not get device info: {e}")
+            self.actual_sample_rate = sample_rate
         
         logger.info(
-            f"AudioRecorder initialized: {sample_rate}Hz, "
+            f"AudioRecorder initialized: {sample_rate}Hz target, "
             f"{channels} channel(s), chunk={chunk_size}"
         )
     
@@ -55,10 +80,11 @@ class AudioRecorder:
             self.is_recording = True
             
             try:
+                # Use actual device sample rate to avoid resampling issues in PyAudio
                 self.stream = self.audio.open(
                     format=pyaudio.paInt16,
                     channels=self.channels,
-                    rate=self.sample_rate,
+                    rate=self.actual_sample_rate,
                     input=True,
                     input_device_index=self.device_index,
                     frames_per_buffer=self.chunk_size,
@@ -124,7 +150,8 @@ class AudioRecorder:
         Returns:
             Duration in seconds
         """
-        return len(audio_data) / self.sample_rate
+        # Use actual sample rate since that's what we recorded at
+        return len(audio_data) / self.actual_sample_rate
     
     def list_devices(self) -> list[dict]:
         """List available audio input devices.

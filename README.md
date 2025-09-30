@@ -111,9 +111,9 @@ hotkey:
 
 # Audio settings
 audio:
-  sample_rate: 16000  # Optimal for speech recognition
+  sample_rate: 16000  # Target rate for transcription (auto-resamples from device)
   channels: 1         # Mono for speech
-  device_index: null  # null for default mic, or specific device number
+  device_index: null  # null = auto-follow system default (USB/Bluetooth/built-in)
 ```
 
 ### Model Selection Guide
@@ -243,7 +243,21 @@ watch -n 1 nvidia-smi
 ```
 
 ### Audio Device Issues
-List available audio devices:
+
+**Automatic Device Detection:**
+The app automatically follows your system's default input device. To switch microphones:
+1. Open System Settings → Sound → Input
+2. Select your desired microphone (USB, Bluetooth, built-in)
+3. Restart the app - it will use the new device automatically
+
+**Supported Devices:**
+- ✅ USB microphones (Blue Yeti, etc.)
+- ✅ Bluetooth headsets (auto-resamples from 44100Hz to 16000Hz)
+- ✅ Built-in laptop microphones
+- ✅ Any device your system recognizes
+
+**Manual Device Selection:**
+If you want to lock to a specific device, list available devices:
 ```bash
 .venv/bin/python -c "
 from src.audio_recorder import AudioRecorder
@@ -255,7 +269,7 @@ recorder.close()
 "
 ```
 
-Then set `device_index` in `config.yaml` to the desired device number.
+Then set `device_index: <number>` in `config.yaml` to lock to that device.
 
 ### Permission Issues with Microphone
 Ensure your user has access to audio devices:

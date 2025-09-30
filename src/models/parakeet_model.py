@@ -111,7 +111,9 @@ class ParakeetTranscriber:
                 transcription = self.model.transcribe([tmp.name])
             
             if transcription and len(transcription) > 0:
-                text = transcription[0].strip()
+                # Handle both Hypothesis object (with .text attribute) and string
+                result = transcription[0]
+                text = result.text.strip() if hasattr(result, 'text') else str(result).strip()
                 logger.info(f"Transcription complete: {len(text)} characters")
                 return text
             else:

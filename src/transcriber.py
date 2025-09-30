@@ -96,11 +96,50 @@ class Transcriber:
             raise RuntimeError("Transcription model not initialized")
         
         try:
+            # Resample to 16kHz if needed (ASR models expect 16kHz)
+            if sample_rate != 16000:
+                logger.info(f"Resampling audio from {sample_rate}Hz to 16000Hz")
+                audio_data = self._resample_audio(audio_data, sample_rate, 16000)
+                sample_rate = 16000
+            
             text = self.model.transcribe(audio_data, sample_rate)
             return text
         except Exception as e:
             logger.error(f"Transcription error: {e}")
             raise
+    
+    def _resample_audio(
+        self,
+        audio_data: np.ndarray,
+        orig_sr: int,
+        target_sr: int
+    ) -> np.ndarray:
+        """Resample audio data to target sample rate.
+        
+        Args:
+            audio_data: Input audio data (int16)
+            orig_sr: Original sample rate
+            target_sr: Target sample rate
+            
+        Returns:
+            Resampled audio data (int16)
+        """
+        try:
+            # Try using scipy (most common)
+            from scipy import signal
+            num_samples = int(len(audio_data) * target_sr / orig_sr)
+            resampled = signal.resample(audio_data, num_samples)
+            return resampled.astype(np.int16)
+        except ImportError:
+            # Fallback: simple linear interpolation (less accurate but works)
+            logger.warning("scipy not available, using simple resampling")
+            indices = np.arange(0, len(audio_data), orig_sr / target_sr)
+            resampled = np.interp(
+                np.arange(len(indices)),
+                np.arange(len(audio_data)) * target_sr / orig_sr,
+                audio_data
+            )
+            return resampled.astype(np.int16)
     
     def is_ready(self) -> bool:
         """Check if transcriber is ready.

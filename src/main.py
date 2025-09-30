@@ -102,11 +102,11 @@ class WisprFlowApp:
                 )
                 return
             
-            # Transcribe
+            # Transcribe (pass actual recorded sample rate for proper resampling)
             self.logger.info("Transcribing audio...")
             text = self.transcriber.transcribe(
                 audio_data,
-                self.config.audio.sample_rate
+                self.audio_recorder.actual_sample_rate
             )
             
             if not text:

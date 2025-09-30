@@ -3,3 +3,4 @@ pyaudio>=0.2.13
 faster-whisper>=1.0.0
 PyYAML>=6.0
 numpy>=1.24.0
+scipy>=1.9.0
