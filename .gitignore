@@ -56,7 +56,5 @@ config.local.yaml
 # User-specific files (personal paths)
 wispr-flow.desktop
 
-# Internal development docs (optional - remove if you want to keep these)
-# *_COMPLETE.md
-# FIX_SUMMARY.md
-# TESTING.md
+# Archived documentation (internal development docs)
+.archive/
