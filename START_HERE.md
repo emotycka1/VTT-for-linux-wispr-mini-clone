@@ -26,13 +26,23 @@ This creates a **desktop icon** you can double-click to start!
 
 ### Want a Keyboard Shortcut? (Recommended!)
 
-1. Open **Settings** → **Keyboard Shortcuts** → **Custom Shortcuts**
-2. Click **+ Add**
-3. Name: `Launch Wispr-Flow`
-4. Command: `~/projects/wispr-flow-clone/start-wispr.sh` (adjust path as needed)
-5. Press **Set Shortcut** → Press **Super+W**
+**Create a shortcut to launch with one key combo:**
 
-Now press **Super+W** anytime to launch! 🎯
+1. Open **Settings** → **Keyboard** → **View and Customize Shortcuts** → **Custom Shortcuts**
+2. Click **+ Add Shortcut** (or **+ Add**)
+3. Fill in the form:
+   - **Name:** `Launch Wispr-Flow`
+   - **Command:** `~/projects/wispr-flow-clone/start-wispr.sh`
+   - *(Adjust path if your project is in a different location)*
+4. Click **Set Shortcut** button
+5. When the dialog appears, **press the keys you want:**
+   - Press **Super+W** (Windows key + W)
+   - Or choose your own combination (like **Ctrl+Alt+W**)
+6. Click **Add** to save
+
+**Now press your chosen keys (e.g., Super+W) anytime to launch!** 🎯
+
+*Note: The "Super" key is the Windows logo key (⊞) on your keyboard*
 
 ---
 

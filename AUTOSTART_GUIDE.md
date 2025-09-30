@@ -143,16 +143,29 @@ sed -i 's/Terminal=true/Terminal=false/' ~/.config/autostart/wispr-flow.desktop
 
 ## Option 4: Keyboard Shortcut
 
-Create a custom keyboard shortcut:
+Create a custom keyboard shortcut to launch with one key combination:
 
-1. **Open Settings** → **Keyboard** → **Keyboard Shortcuts** → **Custom Shortcuts**
+1. **Open Settings** → **Keyboard** → **View and Customize Shortcuts** → **Custom Shortcuts**
 
-2. **Add new shortcut**:
-   - Name: `Start Wispr-Flow`
-   - Command: `/path/to/wispr-flow-clone/start-wispr.sh`
-   - Shortcut: `Super+W` (or your choice)
+2. **Click** **+ Add Shortcut** (or **+ Add**)
 
-3. Now press **Super+W** to launch!
+3. **Fill in the form:**
+   - **Name:** `Start Wispr-Flow`
+   - **Command:** `/path/to/wispr-flow-clone/start-wispr.sh`
+   - *(Replace `/path/to/` with your actual installation path)*
+
+4. **Click "Set Shortcut"** button
+
+5. **When the dialog appears waiting for input:**
+   - Press the **Super key** (Windows logo key ⊞) + **W** together
+   - Or choose your own combo like **Ctrl+Alt+W**
+   - The keys you press will be captured as your shortcut
+
+6. **Click "Add"** to save
+
+**Now press your chosen keys (Super+W) anytime to launch the app!**
+
+*The Super key is the Windows logo key (⊞) on your keyboard, also called the Meta key*
 
 ## Checking if Running
 
