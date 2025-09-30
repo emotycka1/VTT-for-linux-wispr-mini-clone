@@ -131,7 +131,7 @@ User Flow:
 
 ### Quick Start
 ```bash
-cd /home/ubuntu/projects/wispr-flow-clone
+cd ~/projects/wispr-flow-clone
 ./run.sh
 ```
 

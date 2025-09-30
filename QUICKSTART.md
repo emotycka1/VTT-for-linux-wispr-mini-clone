@@ -15,11 +15,11 @@ sudo apt install -y xdotool portaudio19-dev python3-pyaudio python3-venv
 
 ## Step 2: Setup Project
 
-The project is already set up in `/home/ubuntu/projects/wispr-flow-clone`. If you need to set it up elsewhere:
+If you need to set up the project:
 
 ```bash
 # Navigate to project
-cd /home/ubuntu/projects/wispr-flow-clone
+cd ~/projects/wispr-flow-clone
 
 # Virtual environment is already created
 # Dependencies are already installed
@@ -104,7 +104,7 @@ model:
 
 ### "No module named 'faster_whisper'"
 ```bash
-cd /home/ubuntu/projects/wispr-flow-clone
+cd ~/projects/wispr-flow-clone
 .venv/bin/pip install -r requirements.txt
 ```
 

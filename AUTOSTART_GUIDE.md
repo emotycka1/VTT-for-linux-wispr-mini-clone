@@ -60,8 +60,8 @@ cat > ~/Desktop/Start-Wispr-Flow.desktop << 'EOF'
 Type=Application
 Name=Start Wispr-Flow
 Comment=Launch voice-to-text with status info
-Exec=/home/ubuntu/projects/wispr-flow-clone/start-wispr.sh
-Path=/home/ubuntu/projects/wispr-flow-clone
+Exec=/path/to/wispr-flow-clone/start-wispr.sh
+Path=/path/to/wispr-flow-clone
 Icon=audio-input-microphone
 Terminal=true
 Categories=Utility;
@@ -84,7 +84,7 @@ gio set ~/Desktop/Start-Wispr-Flow.desktop metadata::trusted true
 
 3. Fill in:
    - **Name**: Wispr-Flow Voice-to-Text
-   - **Command**: `/home/ubuntu/projects/wispr-flow-clone/start-wispr.sh`
+   - **Command**: `/path/to/wispr-flow-clone/start-wispr.sh`
    - **Comment**: Voice-to-text transcription
 
 4. Click "Add" and close
@@ -101,8 +101,8 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/ubuntu/projects/wispr-flow-clone
-ExecStart=/home/ubuntu/projects/wispr-flow-clone/.venv/bin/python -m src.main
+WorkingDirectory=/path/to/wispr-flow-clone
+ExecStart=/path/to/wispr-flow-clone/.venv/bin/python -m src.main
 Restart=on-failure
 RestartSec=5
 
@@ -149,7 +149,7 @@ Create a custom keyboard shortcut:
 
 2. **Add new shortcut**:
    - Name: `Start Wispr-Flow`
-   - Command: `/home/ubuntu/projects/wispr-flow-clone/start-wispr.sh`
+   - Command: `/path/to/wispr-flow-clone/start-wispr.sh`
    - Shortcut: `Super+W` (or your choice)
 
 3. Now press **Super+W** to launch!

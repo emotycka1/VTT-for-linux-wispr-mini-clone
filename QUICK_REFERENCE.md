@@ -62,8 +62,8 @@ pkill -f "python -m src.main" && sleep 2 && ./run.sh
 ### Current Setup
 
 **Model**: NVIDIA Parakeet TDT 0.6B  
-**Device**: RTX 4090 GPU  
-**Accuracy**: 98-99% (best possible!)  
+**Device**: GPU (CUDA)  
+**Accuracy**: 98-99%  
 **Speed**: Near real-time (0.2-0.5s for 5s audio)  
 **Hotkey**: Ctrl+Alt  
 

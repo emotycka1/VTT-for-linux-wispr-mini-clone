@@ -34,7 +34,7 @@ Set up a key combo to launch instantly:
 1. Settings → Keyboard → Keyboard Shortcuts → Custom Shortcuts
 2. Click "+  Add Custom Shortcut"
 3. Name: `Launch Wispr-Flow`
-4. Command: `/home/ubuntu/projects/wispr-flow-clone/start-wispr.sh`
+4. Command: `~/projects/wispr-flow-clone/start-wispr.sh` (adjust to your path)
 5. Click "Set Shortcut" and press **Super+W** (or your choice)
 
 Now press **Super+W** to launch anytime!
@@ -138,10 +138,10 @@ Whisper on GPU is still much faster than CPU!
 ./test_parakeet.sh
 ```
 
-### Expected Performance with RTX 4090:
+### Expected Performance with GPU:
 - Model load: 5-10 seconds
 - 5-second audio transcription: 0.2-0.5 seconds
-- GPU memory usage: 2-3GB
+- GPU memory usage: 2-4GB (varies by GPU)
 - Accuracy: 98-99%
 
 ## 🐛 Troubleshooting
@@ -206,7 +206,7 @@ wispr
 
 **Your Setup is EXCELLENT!** 🎉
 
-- ✅ RTX 4090 GPU - Best hardware
+- ✅ NVIDIA GPU with CUDA - Hardware acceleration
 - ✅ Parakeet model - Best accuracy
 - ✅ CUDA acceleration - Best speed
 - ✅ Already working great

@@ -29,7 +29,7 @@ This creates a **desktop icon** you can double-click to start!
 1. Open **Settings** → **Keyboard Shortcuts** → **Custom Shortcuts**
 2. Click **+ Add**
 3. Name: `Launch Wispr-Flow`
-4. Command: `/home/ubuntu/projects/wispr-flow-clone/start-wispr.sh`
+4. Command: `~/projects/wispr-flow-clone/start-wispr.sh` (adjust path as needed)
 5. Press **Set Shortcut** → Press **Super+W**
 
 Now press **Super+W** anytime to launch! 🎯
@@ -81,8 +81,8 @@ pkill -f "python -m src.main"
 
 You have:
 - ✅ Best model (Parakeet)
-- ✅ Best hardware (RTX 4090)
-- ✅ Best performance (GPU accelerated)
+- ✅ GPU accelerated (NVIDIA CUDA)
+- ✅ Best performance optimization
 - ✅ Already working and running
 
 ### Only Add:

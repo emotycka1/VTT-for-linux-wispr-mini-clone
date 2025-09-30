@@ -13,6 +13,7 @@ A local voice-to-text application for Ubuntu that allows you to hold a hotkey co
 ## Features
 
 - **Global Hotkey Activation**: Press and hold Ctrl+Alt (configurable) to record
+- **Visual Feedback**: Ubuntu's native microphone indicator shows recording status
 - **GPU Accelerated**: NVIDIA Parakeet model with CUDA for near-instant transcription
 - **Best-in-Class Accuracy**: 98-99% accuracy (1.93 WER on LibriSpeech)
 - **Universal Text Injection**: Works in any text field (terminals, browsers, editors, etc.)
@@ -28,8 +29,8 @@ A local voice-to-text application for Ubuntu that allows you to hold a hotkey co
 - Python 3.9 - 3.12
 - Microphone access
 - NVIDIA GPU with CUDA (recommended for GPU-accelerated models)
-  - Tested on: RTX 4090 Laptop (16GB VRAM)
-  - Works with: RTX 20/30/40 series, other CUDA-compatible GPUs
+  - Tested on: RTX 20/30/40 series GPUs
+  - Works with: Any CUDA-compatible NVIDIA GPU with 4GB+ VRAM
 
 ### System Dependencies
 ```bash
@@ -167,6 +168,16 @@ cd ~/projects/wispr-flow-clone
 4. Speak clearly while holding the keys
 5. Release the keys when done speaking
 6. The transcribed text appears instantly at your cursor!
+
+### Visual Feedback
+
+When you press and hold the hotkey, Ubuntu's **native microphone indicator** automatically appears in your system tray (top bar). This is a built-in privacy feature of Ubuntu 22.04+ that shows whenever any application is actively recording audio.
+
+**What you'll see:**
+- 🎤 **Microphone icon appears** in the top bar = Recording is active
+- **Icon disappears** when you release the hotkey = Recording stopped
+
+This system-level indicator provides instant visual confirmation without requiring any custom implementation. It's the same indicator you see when using Zoom, Discord, or any other application that accesses your microphone, ensuring consistent user experience across all apps.
 
 ### First Run
 On the first run with Parakeet, the model will be downloaded automatically (~600MB). This takes 2-5 minutes. Subsequent runs load the model from cache in ~5-10 seconds.
@@ -311,7 +322,7 @@ app:
 
 ## Performance Tips
 
-**Current Setup (Parakeet + RTX 4090):**
+**Current Setup (Parakeet + GPU):**
 - ✅ Already optimized for best performance!
 - ⚡ Near real-time transcription (0.2-0.5s for 5s audio)
 - 🎯 Best accuracy available (98-99%)
@@ -336,7 +347,7 @@ app:
 | Speed | Fast | Near real-time (GPU) |
 | Accuracy | Excellent | 98-99% (best available) |
 | Customization | Limited | Fully customizable |
-| GPU Support | Yes | Yes (RTX 4090) |
+| GPU Support | Yes | Yes (NVIDIA CUDA) |
 
 ## License
 
@@ -389,9 +400,9 @@ This is a personal/educational project, but suggestions and improvements are wel
 
 ## Current Configuration
 
-**As Installed:**
+**Default Setup:**
 - Model: NVIDIA Parakeet TDT 0.6B
-- Device: CUDA (RTX 4090 GPU)
+- Device: CUDA (GPU acceleration)
 - Accuracy: 98-99%
 - Speed: Near real-time (0.2-0.5s)
 - Hotkey: Ctrl+Alt
